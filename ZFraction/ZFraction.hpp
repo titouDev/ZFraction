@@ -19,6 +19,7 @@ class ZFraction
         void afficher(std::ostream &flux) const;
         ZFraction &operator+=(ZFraction const &a);
         ZFraction &operator*=(ZFraction const &a);
+        double getRealNumber();
         void simplify();
         bool isSuperior(ZFraction const &a) const;
         bool isEqual(ZFraction const &a) const;

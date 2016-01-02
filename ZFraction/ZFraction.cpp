@@ -24,6 +24,12 @@ ZFraction &ZFraction::operator*=(ZFraction const &a)
     m_denominateur*= a.m_denominateur;
     return *this; //no need to simplify
 }
+
+double ZFraction::getRealNumber()
+{
+    return double(m_numerateur)/m_denominateur;
+}
+
 ZFraction & ZFraction::operator+=(ZFraction const &a)
 {
     m_numerateur*=a.m_denominateur;

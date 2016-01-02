@@ -30,5 +30,8 @@ int main()
         cout << "a est egal a b." << endl;
     else
         cout << "a est plus petit que b." << endl;
+    
+    
+    cout << "Nombre Reel de:" << a << " = " << a.getRealNumber() << endl;
     return 0;
 }
