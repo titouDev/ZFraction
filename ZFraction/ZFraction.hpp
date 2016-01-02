@@ -20,16 +20,25 @@ class ZFraction
         void afficher(std::ostream &flux) const;
         ZFraction &operator+=(ZFraction const &a);
         ZFraction &operator*=(ZFraction const &a);
+        ZFraction &simplify();
+        bool isSuperior(ZFraction a) const;
+        bool isEqual(ZFraction const &a) const;
     private:
         int m_numerateur;
         int m_denominateur;
 };
 
+//Helper
 int pgcd(int a, int b);
-std::ostream &operator<<( std::ostream &flux, ZFraction const& fraction);
 
+
+//Operators
+
+std::ostream &operator<<( std::ostream &flux, ZFraction const& fraction);
 ZFraction operator+(ZFraction const& a, ZFraction const& b);
 ZFraction operator*(ZFraction const& a, ZFraction const& b);
+bool operator>(ZFraction const& a, ZFraction const& b);
+bool operator==(ZFraction const& a, ZFraction const& b);
 
 
 #endif /* ZFraction_hpp */

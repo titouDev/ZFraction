@@ -10,20 +10,23 @@
 
 using namespace std;
 
+
 ZFraction::ZFraction(const int & numerateur,const int &denominateur):
-    m_numerateur(numerateur/pgcd(numerateur, denominateur)),
-    m_denominateur(denominateur/pgcd(numerateur, denominateur))
+    m_numerateur(numerateur),
+    m_denominateur(denominateur)
+{
+    (*this).simplify();
+}
+
+ZFraction::ZFraction():m_numerateur(0),m_denominateur(1) // par default, une fraction vaut 0
 {
 }
 
-ZFraction::ZFraction():m_numerateur(0),m_denominateur(1)
-{
-}
 ZFraction &ZFraction::operator*=(ZFraction const &a)
 {
     m_numerateur*= a.m_numerateur;
     m_denominateur*= a.m_denominateur;
-    return *this;
+    return *this; //no need to simplify
 }
 ZFraction & ZFraction::operator+=(ZFraction const &a)
 {
@@ -31,12 +34,8 @@ ZFraction & ZFraction::operator+=(ZFraction const &a)
     m_numerateur+= (a.m_numerateur*m_denominateur);
     m_denominateur *= a.m_denominateur;
     
-    //On s'assure de simlpifier la fonction
-    int currentPgdc = pgcd(m_numerateur, m_denominateur);
-    m_numerateur/=currentPgdc;
-    m_denominateur /= currentPgdc;
     
-    return *this;
+    return (*this).simplify();
 }
 
 ZFraction operator+(ZFraction const& a, ZFraction const& b)
@@ -67,6 +66,37 @@ void ZFraction::afficher(ostream &flux) const
     
 }
 
+bool ZFraction::isSuperior(ZFraction a) const
+{
+    ZFraction fractionCopie(*this);
+    
+    //On met les deux fractions au meme denominateur
+    fractionCopie.m_numerateur *= a.m_denominateur;
+    fractionCopie.m_denominateur *= a.m_denominateur;
+    
+    a.m_numerateur *= m_denominateur; //oui, on prend l'original, pas le fractionCopie
+    a.m_denominateur *= m_denominateur;
+    
+    return (fractionCopie.m_numerateur > a.m_numerateur);
+}
+
+bool ZFraction::isEqual(const ZFraction &a) const
+{
+    //Pas besoin de simplifier les fractions, elles le sont deja a l'initialisation
+    return (m_numerateur==a.m_numerateur) && (m_denominateur==a.m_denominateur);
+}
+
+
+bool operator>(ZFraction const& a, ZFraction const& b)
+{
+    return a.isSuperior(b);
+}
+
+bool operator==(ZFraction const& a, ZFraction const& b)
+{
+    return a.isEqual(b);
+}
+
 ostream &operator<<( ostream &flux, ZFraction const& fraction)
 {
     fraction.afficher(flux);
@@ -83,4 +113,14 @@ int pgcd(int a, int b)
         a=t;
     }
     return a;
+}
+
+ZFraction &ZFraction::simplify()
+{
+    //On s'assure de simlpifier la fonction
+    int currentPgdc = pgcd(m_numerateur, m_denominateur);
+    m_numerateur/=currentPgdc;
+    m_denominateur /= currentPgdc;
+
+    return *this;
 }
