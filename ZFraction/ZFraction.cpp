@@ -16,6 +16,30 @@ ZFraction::ZFraction(const int & numerateur,const int &denominateur):
 {
 }
 
+ZFraction::ZFraction():m_numerateur(0),m_denominateur(1)
+{
+}
+
+ZFraction & ZFraction::operator+=(ZFraction const &a)
+{
+    m_numerateur*=a.m_denominateur;
+    m_numerateur+= (a.m_numerateur*m_denominateur);
+    m_denominateur *= a.m_denominateur;
+    
+    int currentPgdc = pgcd(m_numerateur, m_denominateur);
+    m_numerateur/=currentPgdc;
+    m_denominateur /= currentPgdc;
+    
+    return *this;
+}
+
+ZFraction operator+(ZFraction const& a, ZFraction const& b)
+{
+    ZFraction fractionCopie(a);
+    fractionCopie += b;
+    return fractionCopie;
+}
+
 void ZFraction::afficher(ostream &flux) const
 {
     if (m_denominateur == 1)
