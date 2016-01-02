@@ -21,7 +21,7 @@ class ZFraction
         ZFraction &operator+=(ZFraction const &a);
         ZFraction &operator*=(ZFraction const &a);
         ZFraction &simplify();
-        bool isSuperior(ZFraction a) const;
+        bool isSuperior(ZFraction const &a) const;
         bool isEqual(ZFraction const &a) const;
     private:
         int m_numerateur;

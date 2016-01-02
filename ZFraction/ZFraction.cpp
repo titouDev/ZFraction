@@ -66,18 +66,9 @@ void ZFraction::afficher(ostream &flux) const
     
 }
 
-bool ZFraction::isSuperior(ZFraction a) const
+bool ZFraction::isSuperior(ZFraction const &a) const
 {
-    ZFraction fractionCopie(*this);
-    
-    //On met les deux fractions au meme denominateur
-    fractionCopie.m_numerateur *= a.m_denominateur;
-    fractionCopie.m_denominateur *= a.m_denominateur;
-    
-    a.m_numerateur *= m_denominateur; //oui, on prend l'original, pas le fractionCopie
-    a.m_denominateur *= m_denominateur;
-    
-    return (fractionCopie.m_numerateur > a.m_numerateur);
+    return (m_numerateur*a.m_denominateur) > (m_denominateur*a.m_numerateur);
 }
 
 bool ZFraction::isEqual(const ZFraction &a) const
