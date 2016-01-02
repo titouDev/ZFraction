@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1831C1051C38356C00C0C2B3 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1831C1041C38356C00C0C2B3 /* main.cpp */; };
+		1831C10D1C3836D300C0C2B3 /* ZFraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1831C10B1C3836D300C0C2B3 /* ZFraction.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		1831C1011C38356C00C0C2B3 /* ZFraction */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ZFraction; sourceTree = BUILT_PRODUCTS_DIR; };
 		1831C1041C38356C00C0C2B3 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		1831C10B1C3836D300C0C2B3 /* ZFraction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ZFraction.cpp; sourceTree = "<group>"; };
+		1831C10C1C3836D300C0C2B3 /* ZFraction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ZFraction.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				1831C1041C38356C00C0C2B3 /* main.cpp */,
+				1831C10B1C3836D300C0C2B3 /* ZFraction.cpp */,
+				1831C10C1C3836D300C0C2B3 /* ZFraction.hpp */,
 			);
 			path = ZFraction;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1831C10D1C3836D300C0C2B3 /* ZFraction.cpp in Sources */,
 				1831C1051C38356C00C0C2B3 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

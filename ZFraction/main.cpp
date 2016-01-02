@@ -7,9 +7,15 @@
 //
 
 #include <iostream>
+#include "ZFraction.hpp"
+
+using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    
+    ZFraction a(12, 40);
+    ZFraction b(7);
+    
+    cout << b << endl;
     return 0;
 }
