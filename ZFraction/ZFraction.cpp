@@ -19,13 +19,19 @@ ZFraction::ZFraction(const int & numerateur,const int &denominateur):
 ZFraction::ZFraction():m_numerateur(0),m_denominateur(1)
 {
 }
-
+ZFraction &ZFraction::operator*=(ZFraction const &a)
+{
+    m_numerateur*= a.m_numerateur;
+    m_denominateur*= a.m_denominateur;
+    return *this;
+}
 ZFraction & ZFraction::operator+=(ZFraction const &a)
 {
     m_numerateur*=a.m_denominateur;
     m_numerateur+= (a.m_numerateur*m_denominateur);
     m_denominateur *= a.m_denominateur;
     
+    //On s'assure de simlpifier la fonction
     int currentPgdc = pgcd(m_numerateur, m_denominateur);
     m_numerateur/=currentPgdc;
     m_denominateur /= currentPgdc;
@@ -40,15 +46,23 @@ ZFraction operator+(ZFraction const& a, ZFraction const& b)
     return fractionCopie;
 }
 
+ZFraction operator*(ZFraction const& a, ZFraction const& b)
+{
+    ZFraction fractionCopie(a);
+    fractionCopie *= b;
+    return fractionCopie;
+}
+
+
 void ZFraction::afficher(ostream &flux) const
 {
     if (m_denominateur == 1)
     {
-    flux << m_numerateur << endl;
+    flux << m_numerateur;
     }
     else
     {
-    flux << m_numerateur << "/" << m_denominateur << endl;
+    flux << m_numerateur << "/" << m_denominateur;
     }
     
 }

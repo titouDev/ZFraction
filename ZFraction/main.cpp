@@ -19,7 +19,7 @@ int main()
     
     c = a+b;               //Calcule 4/5 + 2/1 = 14/5
     
-    //d = a*b;               //Calcule 4/5 * 2/1 = 8/5
+    d = a*b;               //Calcule 4/5 * 2/1 = 8/5
     
     cout << a << " + " << b << " = " << c << endl;
     
