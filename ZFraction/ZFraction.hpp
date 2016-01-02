@@ -15,8 +15,7 @@
 class ZFraction
 {
     public:
-        ZFraction(); //constructeur vide
-        ZFraction(const int &numerateur,const int &denominateur=1); //constructeur
+        ZFraction(const int &numerateur=0,const int &denominateur=1); //constructeur
         void afficher(std::ostream &flux) const;
         ZFraction &operator+=(ZFraction const &a);
         ZFraction &operator*=(ZFraction const &a);

@@ -18,10 +18,6 @@ ZFraction::ZFraction(const int & numerateur,const int &denominateur):
     simplify();
 }
 
-ZFraction::ZFraction():m_numerateur(0),m_denominateur(1) // par default, une fraction vaut 0
-{
-}
-
 ZFraction &ZFraction::operator*=(ZFraction const &a)
 {
     m_numerateur*= a.m_numerateur;
